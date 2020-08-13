@@ -1,11 +1,15 @@
-@Library('jenkins-pipeline-shared-libraries')_
+@Library('jenkins-pipeline-shared-libraries-kmok')_
 
-def changeAuthor = env.ghprbPullAuthorLogin ?: CHANGE_AUTHOR
+/* def changeAuthor = env.ghprbPullAuthorLogin ?: CHANGE_AUTHOR
 def changeBranch = env.ghprbSourceBranch ?: CHANGE_BRANCH
-def changeTarget = env.ghprbTargetBranch ?: CHANGE_TARGET
+def changeTarget = env.ghprbTargetBranch ?: CHANGE_TARGET */
+def changeAuthor = 'Kevin-Mok-Bot'
+def changeBranch = 'no-creds'
+def changeTarget = 'master'
 
 pipeline {
-    agent { label 'operator-slave'}
+    /* agent { label 'operator-slave'} */
+    agent any
     options {
         buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '10')
         timeout(time: 90, unit: 'MINUTES')
